@@ -1,0 +1,7 @@
+Feature: Agregar productos al carrito
+
+  Scenario: Agregar 2 productos al carrito de compras
+    Given El usuario está en la página de productos
+    When El usuario selecciona "Producto 1" y establece la cantidad en 2
+    And El usuario selecciona "Producto 2" y establece la cantidad en 5
+    Then El carrito debe contener ambos productos con las cantidades correctas
