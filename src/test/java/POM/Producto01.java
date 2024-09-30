@@ -14,14 +14,17 @@ public class Producto01 extends Base {
     By QuantityInput = By.className("input-text");
     By addToCartButton = By.className("single_add_to_cart_button");
 
+    // Selector para el segundo producto
+    By NameProduct2 = By.className("woocommerce-loop-product__title");
+    By addToCartButton2 = By.className("single_add_to_cart_button");
+
     public Producto01(WebDriver driver) {
         super(driver);
     }
 
-    public void signIn() {
-        click(NameProduct); // Hacer clic en el producto
+    public void addFirstProductToCart() {
+        click(NameProduct); // Hacer clic en el primer producto
 
-        // Acceder al campo de cantidad y establecer el valor
         WebElement quantityField = driver.findElement(QuantityInput);
         quantityField.clear();
         quantityField.sendKeys("2"); // Establecer la cantidad deseada
@@ -29,7 +32,21 @@ public class Producto01 extends Base {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("blockOverlay")));
 
-        // Hacer clic en "Añadir al carrito"
+
         click(addToCartButton);
+    }
+
+    public void addSecondProductToCart() {
+        click(NameProduct2);
+
+        // Establecer la cantidad
+        WebElement quantityField = driver.findElement(QuantityInput);
+        quantityField.clear();
+        quantityField.sendKeys("5");
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("blockOverlay")));
+
+        click(addToCartButton2);
     }
 }
